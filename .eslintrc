@@ -1,0 +1,29 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": 0,
+    "import/no-named-as-default": 0,
+    "func-names": 0,
+    "brace-style": [2, "stroustrup"],
+    "max-len": 0,
+    "no-nested-ternary": 0,
+    "no-param-reassign": [2, { "props": false }],
+    "no-return-assign": 0,
+    "no-unused-expressions": 0,
+    "no-var": 0,
+    "quote-props": [2, "consistent"],
+    "radix": 0,
+    "react/jsx-no-bind": 0,
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-indent-props": [1, 2],
+    "react/jsx-indent": [1, 2],
+    "react/forbid-prop-types": 0,
+    "react/no-multi-comp": 0,
+    "react/prefer-es6-class": 0,
+    "react/sort-comp": 0,
+    "valid-jsdoc": 2,
+    "vars-on-top": 0
+  },
+  "parser": "babel-eslint"
+}

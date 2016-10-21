@@ -1,0 +1,84 @@
+{
+  "name": "react-redux-boilerplate",
+  "version": "0.0.1",
+  "description": "React Redux Boilerplate",
+  "main": "src/index.js",
+  "scripts": {
+    "lintJS": "eslint --fix ./src",
+    "lintCSS": "stylelint src/**/*.css",
+    "test": "jest",
+    "browser": "cross-env NODE_ENV=development babel-node ./server.js",
+    "build": "rimraf public && webpack --config ./webpack.config.prod.js",
+    "server": "npm run build && cross-env NODE_ENV=production babel-node ./server.js"
+  },
+  "author": "John Hannah",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.15.1",
+    "enzyme": "2.5.1",
+    "lodash": "4.16.4",
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
+    "react-redux": "4.4.5",
+    "react-router": "2.8.1",
+    "react-router-redux": "4.0.6",
+    "redux": "3.6.0",
+    "redux-logger": "2.7.0",
+    "redux-thunk": "2.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.3.7",
+    "babel-cli": "6.10.1",
+    "babel-core": "6.10.4",
+    "babel-eslint": "6.1.2",
+    "babel-jest": "16.0.0",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.16.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-react-hmre": "1.1.1",
+    "babel-preset-stage-0": "6.5.0",
+    "copy-webpack-plugin": "3.0.1",
+    "cross-env": "2.0.0",
+    "css-loader": "0.23.1",
+    "csswring": "5.1.0",
+    "eslint": "3.8.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-babel": "3.3.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx": "0.0.2",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "express": "4.14.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "ghooks": "1.3.2",
+    "jest": "16.0.1",
+    "jest-cli": "16.0.1",
+    "postcss": "5.2.4",
+    "postcss-import": "8.1.2",
+    "postcss-inline-comment": "3.0.0",
+    "postcss-loader": "0.9.1",
+    "postcss-nested": "1.0.0",
+    "postcss-simple-vars": "3.0.0",
+    "react-addons-test-utils": "15.3.2",
+    "react-test-renderer": "15.3.2",
+    "rimraf": "2.5.4",
+    "style-loader": "0.13.1",
+    "stylelint": "7.5.0",
+    "webpack": "1.13.1",
+    "webpack-dev-middleware": "1.6.1",
+    "webpack-hot-middleware": "2.12.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lullabot/React-Redux-Boilerplate"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lintJS --loglevel=silent && npm run lintCSS --loglevel=silent",
+      "pre-push": "npm test"
+    }
+  }
+}

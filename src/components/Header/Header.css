@@ -1,0 +1,20 @@
+.header {
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+
+.title,
+.menu {
+  box-sizing: border-box;
+  float: left;
+  margin: 0;
+  width: 50%;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.menu {
+  text-align: right;
+}

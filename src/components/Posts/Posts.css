@@ -1,0 +1,14 @@
+@import '../../variables.css';
+
+.post-titles {
+  padding-left: 0;
+
+  li {
+    list-style: none;
+    text-transform: capitalize;
+  }
+
+  .post-title {
+    margin-bottom: 20px;
+  }
+}
