@@ -25,12 +25,10 @@ function setup() {
   };
 }
 
-describe('components', () => {
-  describe('Home', () => {
-    it('should render', () => {
-      const { wrapper } = setup();
-      expect(wrapper.find('.page-home')).to.have.length(1);
-    });
+describe('Home', () => {
+  it('should render', () => {
+    const { wrapper } = setup();
+    expect(wrapper.find('.page-home')).to.have.length(1);
   });
 });
 /* eslint-enable no-undef */
