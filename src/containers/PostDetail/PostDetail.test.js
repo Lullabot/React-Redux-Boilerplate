@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { shallow } from 'enzyme';
+import { expect } from 'chai';
 import { PostDetail } from './PostDetail';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
@@ -16,7 +17,7 @@ function setup() {
       ]
     },
     params: {
-      postID: 1
+      postID: '1'
     }
   };
   const wrapper = shallow(<PostDetail {...props} />);
@@ -30,7 +31,7 @@ function setup() {
 describe('PostDetail', () => {
   it('should render', () => {
     const { wrapper } = setup();
-    expect(wrapper.is('.page-post')).toBe(true);
+    expect(wrapper.find('.page-post')).to.have.length(1);
   });
 });
 /* eslint-enable no-undef */
