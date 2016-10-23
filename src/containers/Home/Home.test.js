@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { shallow } from 'enzyme';
+import { expect } from 'chai';
+import sinon from 'sinon';
 import { Home } from './Home';
+
+const fn = sinon.spy();
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
@@ -11,7 +15,7 @@ function setup() {
       items: []
     },
     isFetching: false,
-    dispatch: jest.fn() // eslint-disable-line
+    dispatch: fn
   };
   const wrapper = shallow(<Home {...props} />);
 
@@ -25,7 +29,7 @@ describe('components', () => {
   describe('Home', () => {
     it('should render', () => {
       const { wrapper } = setup();
-      expect(wrapper.is('.page-home')).toBe(true);
+      expect(wrapper.find('.page-home')).to.have.length(1);
     });
   });
 });
