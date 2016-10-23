@@ -6,7 +6,7 @@
   "scripts": {
     "lintJS": "eslint --fix ./src",
     "lintCSS": "stylelint src/**/*.css",
-    "test": "babel-node node_modules/.bin/_mocha src/**/*.test.js",
+    "test": "babel-node node_modules/.bin/_mocha -c src/**/*.test.js",
     "browser": "cross-env NODE_ENV=development babel-node ./server.js",
     "build": "rimraf public && webpack --config ./webpack.config.prod.js",
     "server": "npm run build && cross-env NODE_ENV=production babel-node ./server.js"
