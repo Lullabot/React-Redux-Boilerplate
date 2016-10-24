@@ -4,6 +4,8 @@ const postcssInlineComment = require('postcss-inline-comment');
 const postcssNested = require('postcss-nested');
 const postcssVars = require('postcss-simple-vars');
 const postcssImport = require('postcss-import');
+const postcssMixins = require('postcss-mixins');
+const postcssMqPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
 const csswring = require('csswring');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -51,6 +53,15 @@ module.exports = {
     ]
   },
   postcss: function() {
-    return [postcssImport, postcssVars, postcssNested, postcssInlineComment, autoprefixer, csswring];
+    return [
+      postcssImport,
+      postcssVars,
+      postcssNested,
+      postcssInlineComment,
+      postcssMixins,
+      postcssMqPacker,
+      autoprefixer,
+      csswring
+    ];
   }
 };
