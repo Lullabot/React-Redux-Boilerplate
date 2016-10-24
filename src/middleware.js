@@ -18,9 +18,6 @@ export default (req, res) => {
       if (process.env.NODE_ENV === 'development') {
         res.status(200).send(`
           <html>
-            <head>
-              <title>React Redux Boilerplate</title>
-            </head>
             <body>
               <div id='app'></div>
               <script src='bundle.js'></script>
@@ -32,7 +29,6 @@ export default (req, res) => {
         res.status(200).send(`
           <html>
             <head>
-              <title>React Redux Boilerplate</title>
               <link rel='stylesheet' href='bundle.css'>
             </head>
             <body>

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import DocumentMeta from 'react-document-meta';
 import { fetchPostsIfNeeded } from '../../actions';
 import Posts from '../../components/Posts/Posts';
 import Header from '../../components/Header/Header';
@@ -15,6 +16,16 @@ export class Home extends Component {
     isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
   }
+  static meta() {
+    return {
+      title: 'React Redux Boilerplate',
+      description: 'Put the description here!',
+      canonical: 'http://localhost:3000',
+      meta: {
+        charset: 'utf-8'
+      }
+    };
+  }
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchPostsIfNeeded());
@@ -24,6 +35,7 @@ export class Home extends Component {
     const isEmpty = posts.items.length === 0;
     return (
       <div className="page page-home">
+        <DocumentMeta {...Home.meta()} />
         <Header />
         <h3>Latest Posts</h3>
         {isEmpty
