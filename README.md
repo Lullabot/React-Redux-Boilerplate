@@ -13,7 +13,7 @@ To build for production w/ server rendering, type:
 
 By default, the site is available at http://localhost:3000
 
-If you would like to contribute to this project, fork this repo and submit pull requests. JavaScript code should use the latest JS syntax (ES6 and/or ES7). React components that don't need access to either state of React lifecycle methods should be written as [stateless functional components](https://egghead.io/lessons/react-building-stateless-function-components-new-in-react-0-14).
+If you would like to contribute to this project, fork the repo and submit pull requests. JavaScript code should use the latest JS syntax (ES6 and/or ES7). React components that don't need access to either state or React lifecycle methods should be written as [stateless functional components](https://egghead.io/lessons/react-building-stateless-function-components-new-in-react-0-14).
 
 If you are suggesting a major overhaul of some aspect of this project, please submit an issue with your idea and allow some discussion before commencing work.
 
@@ -26,7 +26,7 @@ The intention is to provide a basic, but comprehensive, skeleton for React proje
 - React Router (routing)
 - webpack (bundling assets)
 - PostCSS (processing of CSS)
-- Stylelint and eslint
+- Stylelint and eslint (modified AirBnB)
 - Mocha and Chai (testing)
 - Babel (latest JS)
 - ghooks (run tasks using git hooks like commit, pre-push)
@@ -36,19 +36,19 @@ All of these are currently mainstream tools for building modern JavaScript appli
 #### Redux
 Redux is both a library and an architecture. It is influenced by Flux, Immutable.js and other prior work. As Facebook are the authors of React and they have famously used Flux in their work, why would one choose instead to use Redux?
 
-Below is an abridged response from Dan Abramov, the creator of Redux, on Stack Overflow about how/why Redux may be preferred over Flux. It's a lengthy quote, but provides valuable insight into the major benefits of Redux.
+Below is an abridged response from Dan Abramov, the creator of Redux, on [Stack Overflow](http://stackoverflow.com/questions/32461229/why-use-redux-over-facebook-flux) about how/why Redux may be preferred over Flux. It's a lengthy quote, but provides valuable insight into the major benefits of Redux.
 
 > Redux is not that different from Flux. Overall it's the same architecture, but Redux is able to cut some complexity corners by using functional composition where Flux uses callback registration.
 
 > It's not fundamentally different, but I find it that Redux makes certain abstractions easier, or at least possible to implement, that would be hard or impossible to implement in Flux.
 
-> ### Reducer Composition
+> #### Reducer Composition
 
 > Take, for example, pagination. My Flux + React Router example handles pagination, but the code for that is awful. One of the reasons it's awful is that Flux makes it unnatural to reuse functionality across stores. If two stores need to handle pagination in response to different actions, they either need to inherit from a common base store (bad! you're locking yourself into a particular design when you use inheritance), or call a function from the handler, which will need to somehow operate on the Flux store's private state. The whole thing is messy (although definitely in the realm of possible).
 
 > On the other hand, with Redux pagination is natural thanks to reducer composition. It's reducers all the way down, so you can write a reducer factory that generates pagination reducers and then use it in your reducer tree. The key to why it's so easy is because in Flux, stores are flat, but in Redux, reducers can be nested via functional composition, just like React components can be nested.
 
-> ### Server Rendering
+> #### Server Rendering
 
 > People have been rendering on the server fine with Flux, but seeing that we have 20 Flux libraries each attempting to make server rendering “easier”, perhaps Flux has some rough edges on the server. The truth is Facebook doesn't do much server rendering, so they haven't been very concerned about it, and rely on the ecosystem to make it easier...
 
@@ -56,7 +56,7 @@ Below is an abridged response from Dan Abramov, the creator of Redux, on Stack O
 
 >Again, this is a case of something possible both in Flux and Redux, but Flux libraries solve this problem by introducing a ton of API and conventions, and Redux doesn't even have to solve it because it doesn't have that problem in the first place thanks to conceptual simplicity.
 
->### Developer Experience
+>#### Developer Experience
 
 >I didn't actually intend Redux to become a popular Flux library—I wrote it as I was working on my ReactEurope talk on hot reloading with time travel. I had one main objective: make it possible to change reducer code on the fly or even “change the past” by crossing out actions, and see the state being recalculated.
 
@@ -64,11 +64,11 @@ Below is an abridged response from Dan Abramov, the creator of Redux, on Stack O
 
 >When Redux needs to reload the reducer code, it calls replaceReducer(), and the app runs with the new code. In Flux, data and functions are entangled in Flux stores, so you can't “just replace the functions”. Moreover, you'd have to somehow re-register the new versions with the Dispatcher—something Redux doesn't even have.
 
->### Ecosystem
+>#### Ecosystem
 
 >Redux has a rich and fast-growing ecosystem. This is because it provides a few extension points such as middleware. It was designed with use cases such as logging, support for Promises, Observables, routing, immutability dev checks, persistence, etc, in mind. Not all of these will turn out to be useful, but it's nice to have access to a set of tools that can be easily combined to work together.
 
-> ### Simplicity
+> #### Simplicity
 
 >Redux preserves all the benefits of Flux (recording and replaying of actions, unidirectional data flow, dependent mutations) and adds new benefits (easy undo-redo, hot reloading) without introducing Dispatcher and store registration.
 
