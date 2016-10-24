@@ -19,6 +19,7 @@
     "enzyme": "2.5.1",
     "lodash": "4.16.4",
     "react": "15.3.2",
+    "react-document-meta": "2.0.3",
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
