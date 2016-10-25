@@ -2,9 +2,11 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { match, RouterContext } from 'react-router';
+import { match, Router } from 'react-router';
 import reducers from './reducers';
 import routes from './routes';
+
+const store = createStore(reducers);
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -26,6 +28,7 @@ export default (req, res) => {
         `);
       }
       else if (process.env.NODE_ENV === 'production') {
+        const preloadedState = store.getState();
         res.status(200).send(`
           <html>
             <head>
@@ -33,10 +36,14 @@ export default (req, res) => {
             </head>
             <body>
               <div id='app'>${renderToString(
-                <Provider store={createStore(reducers)}>
-                  <RouterContext {...renderProps} />
+                <Provider store={store}>
+                  <Router {...renderProps} />
                 </Provider>
-              )}</div>
+              )}
+              </div>
+              <script>
+                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
+              </script>
               <script src='bundle.js'></script>
             </body>
           </html>

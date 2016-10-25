@@ -9,7 +9,10 @@ import Header from '../../components/Header/Header';
 if (process.env.WEBPACK) {
   require('./Home.css'); // eslint-disable-line global-require
 }
-
+/*
+  Only use classes if you need access to React's lifecycle methods. Stateless functional components
+  are preferred when lifecycle methods aren't needed.
+ */
 export class Home extends Component {
   static propTypes = {
     posts: PropTypes.object.isRequired,
