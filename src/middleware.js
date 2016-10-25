@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, Router } from 'react-router';
+import DocumentMeta from 'react-document-meta';
 import reducers from './reducers';
 import routes from './routes';
 
@@ -33,6 +34,7 @@ export default (req, res) => {
           <html>
             <head>
               <link rel='stylesheet' href='bundle.css'>
+              ${DocumentMeta.renderAsReact()}
             </head>
             <body>
               <div id='app'>${renderToString(
