@@ -3,9 +3,11 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, Router } from 'react-router';
-import DocumentMeta from 'react-document-meta';
+import Meta from 'react-helmet';
 import reducers from './reducers';
 import routes from './routes';
+import api from './lib/api';
+import { receivePosts } from './actions';
 
 const store = createStore(reducers);
 
@@ -29,27 +31,38 @@ export default (req, res) => {
         `);
       }
       else if (process.env.NODE_ENV === 'production') {
-        const preloadedState = store.getState();
-        res.status(200).send(`
-          <html>
-            <head>
-              <link rel='stylesheet' href='bundle.css'>
-              ${DocumentMeta.renderAsReact()}
-            </head>
-            <body>
-              <div id='app'>${renderToString(
-                <Provider store={store}>
-                  <Router {...renderProps} />
-                </Provider>
-              )}
-              </div>
-              <script>
-                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
-              </script>
-              <script src='bundle.js'></script>
-            </body>
-          </html>
-        `);
+        api('https://jsonplaceholder.typicode.com/posts')
+          .then(
+            json => store.dispatch(receivePosts(json)),
+          )
+          .then(() => {
+            const preloadedState = store.getState();
+            const html = renderToString(
+              <Provider store={store}>
+                <Router {...renderProps} />
+              </Provider>
+            );
+            const head = Meta.rewind();
+            res.status(200).send(`
+              <html>
+                <head>
+                  ${head.title.toString()}
+                  ${head.meta.toString()}
+                  ${head.link.toString()}
+                  <link rel='stylesheet' href='bundle.css'>
+                </head>
+                <body>
+                  <div id='app'>${html}
+                  </div>
+                  <script>
+                    window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
+                  </script>
+                  <script src='bundle.js'></script>
+                </body>
+              </html>
+            `);
+            return;
+          });
       }
     }
     else {
