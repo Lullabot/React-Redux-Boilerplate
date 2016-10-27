@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Meta from 'react-helmet';
-import find from 'lodash/find';
+import { find } from 'lodash';
 import Header from '../../components/Header/Header';
 import { fetchPostsIfNeeded } from '../../actions';
 // Import can't be in conditional so use require.
