@@ -25,7 +25,7 @@ export default (req, res) => {
           <html>
             <body>
               <div id='app'></div>
-              <script src='bundle.js'></script>
+              <script src='/bundle.js'></script>
             </body>
           </html>
         `);
@@ -49,7 +49,7 @@ export default (req, res) => {
                   ${head.title.toString()}
                   ${head.meta.toString()}
                   ${head.link.toString()}
-                  <link rel='stylesheet' href='bundle.css'>
+                  <link type='text/css' rel='stylesheet' href='/bundle.css'>
                 </head>
                 <body>
                   <div id='app'>${html}
@@ -57,7 +57,7 @@ export default (req, res) => {
                   <script>
                     window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
                   </script>
-                  <script src='bundle.js'></script>
+                  <script src='/bundle.js'></script>
                 </body>
               </html>
             `);
