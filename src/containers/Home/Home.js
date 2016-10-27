@@ -19,22 +19,24 @@ export class Home extends Component {
     isFetching: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
   }
-  static head = {
-    title: 'React Redux Boilerplate',
-    link: [
-      {
-        rel: 'canonical',
-        href: 'http://localhost:3000'
-      }
-    ],
-    meta: [
-      {
-        charset: 'utf-8'
-      },
-      {
-        name: 'description', content: 'Put the description here!'
-      }
-    ]
+  static getMeta() {
+    return {
+      title: 'React Redux Boilerplate',
+      link: [
+        {
+          rel: 'canonical',
+          href: 'http://localhost:3000'
+        }
+      ],
+      meta: [
+        {
+          charset: 'utf-8'
+        },
+        {
+          name: 'description', content: 'Put the home page description here!'
+        }
+      ]
+    };
   }
   componentDidMount() {
     const { dispatch } = this.props;
@@ -43,13 +45,14 @@ export class Home extends Component {
   render() {
     const { posts, isFetching } = this.props;
     const isEmpty = posts.items.length === 0;
+    const head = Home.getMeta();
     return (
       <div className="page page-home">
         <Meta
-          title={Home.head.title}
-          description={Home.head.description}
-          link={Home.head.link}
-          meta={Home.head.meta}
+          title={head.title}
+          description={head.description}
+          link={head.link}
+          meta={head.meta}
         />
         <Header />
         <h3>Latest Posts</h3>
