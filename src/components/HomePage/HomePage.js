@@ -12,9 +12,9 @@ if (process.env.WEBPACK) {
 
 export class HomePage extends Component {
   static propTypes = {
-    posts: PropTypes.object.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    posts: PropTypes.arrayOf(PropTypes.object.isRequired)
   }
   static getMeta() {
     return {
@@ -41,7 +41,7 @@ export class HomePage extends Component {
   }
   render() {
     const { posts, isFetching } = this.props;
-    const isEmpty = posts.items.length === 0;
+    const isEmpty = posts.length === 0;
     const head = HomePage.getMeta();
     return (
       <div className="HomePage">
@@ -56,7 +56,7 @@ export class HomePage extends Component {
         {isEmpty
           ? (isFetching ? <h3>Loading...</h3> : <h4 className="HomePage-message">Empty :(</h4>)
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <Posts posts={posts.items} />
+            <Posts posts={posts} />
           </div>
         }
       </div>
@@ -65,15 +65,7 @@ export class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { posts } = state;
-  const {
-    isFetching,
-    lastUpdated
-  } = posts || {
-    isFetching: true,
-    items: []
-  };
-
+  const { posts = [], isFetching = false, lastUpdated } = state;
   return {
     posts,
     isFetching,

@@ -35,7 +35,7 @@ export class PostPage extends Component {
   }
   static getPost(props) {
     const postID = parseInt(props.params.postID) || 0;
-    return find(props.posts.items, { id: postID }) || {};
+    return find(props.posts, { id: postID }) || {};
   }
   componentDidMount() {
     const { dispatch } = this.props;
@@ -62,15 +62,7 @@ export class PostPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { posts } = state;
-  const {
-    isFetching,
-    lastUpdated
-  } = posts || {
-    isFetching: true,
-    items: []
-  };
-
+  const { posts = [], isFetching = false, lastUpdated } = state;
   return {
     posts,
     isFetching,
