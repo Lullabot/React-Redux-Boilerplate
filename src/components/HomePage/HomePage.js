@@ -2,18 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Meta from 'react-helmet';
 import { fetchPostsIfNeeded } from '../../actions';
-import Posts from '../../components/Posts/Posts';
-import Header from '../../components/Header/Header';
+import Posts from '../Posts/Posts';
+import Header from '../Header/Header';
 
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
-  require('./Home.css'); // eslint-disable-line global-require
+  require('./HomePage.css'); // eslint-disable-line global-require
 }
-/*
-  Only use classes if you need access to React's lifecycle methods. Stateless functional components
-  are preferred when lifecycle methods aren't needed.
- */
-export class Home extends Component {
+
+export class HomePage extends Component {
   static propTypes = {
     posts: PropTypes.object.isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -45,9 +42,9 @@ export class Home extends Component {
   render() {
     const { posts, isFetching } = this.props;
     const isEmpty = posts.items.length === 0;
-    const head = Home.getMeta();
+    const head = HomePage.getMeta();
     return (
-      <div className="page page-home">
+      <div className="HomePage">
         <Meta
           title={head.title}
           description={head.description}
@@ -57,7 +54,7 @@ export class Home extends Component {
         <Header />
         <h3>Latest Posts</h3>
         {isEmpty
-          ? (isFetching ? <h3>Loading...</h3> : <h4 className="home__message">Empty :(</h4>)
+          ? (isFetching ? <h3>Loading...</h3> : <h4 className="HomePage-message">Empty :(</h4>)
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
             <Posts posts={posts.items} />
           </div>
@@ -84,4 +81,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(HomePage);

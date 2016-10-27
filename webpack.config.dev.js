@@ -40,7 +40,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css/,
+        test: /\.css$/,
         loader: 'style!css!postcss',
         include: path.resolve(__dirname, '/')
       }

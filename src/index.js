@@ -8,10 +8,6 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
 import routes from './routes';
-// Import can't be in conditional so use require.
-if (process.env.WEBPACK) {
-  require('./main.css'); // eslint-disable-line
-}
 
 // This allows us to use Redux dev tools.
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line

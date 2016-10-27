@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Meta from 'react-helmet';
 import find from 'lodash/find';
-import Header from '../../components/Header/Header';
+import Header from '../Header/Header';
 import { fetchPostsIfNeeded } from '../../actions';
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
-  require('./PostDetail.css'); // eslint-disable-line global-require
+  require('./PostPage.css'); // eslint-disable-line global-require
 }
 
-export class PostDetail extends Component {
+export class PostPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   }
@@ -20,7 +20,7 @@ export class PostDetail extends Component {
       link: [
         {
           rel: 'canonical',
-          href: `http://localhost:3000/post-detail/${id}`
+          href: `http://localhost:3000/post/${id}`
         }
       ],
       meta: [
@@ -42,10 +42,10 @@ export class PostDetail extends Component {
     dispatch(fetchPostsIfNeeded());
   }
   render() {
-    const post = PostDetail.getPost(this.props);
-    const head = PostDetail.getMeta(post.id);
+    const post = PostPage.getPost(this.props);
+    const head = PostPage.getMeta(post.id);
     return (
-      <div className="page page-post">
+      <div className="PostPage">
         <Meta
           title={head.title}
           description={head.description}
@@ -53,7 +53,7 @@ export class PostDetail extends Component {
           meta={head.meta}
         />
         <Header />
-        <h1 className="page-post__post-title">{post.title}</h1>
+        <h1 className="PostPage-title">{post.title}</h1>
         <p>{post.body}</p>
         <Link to="/">Return home</Link>
       </div>
@@ -78,4 +78,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PostDetail);
+export default connect(mapStateToProps)(PostPage);

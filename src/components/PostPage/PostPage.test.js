@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import { PostDetail } from './PostDetail';
+import { PostPage } from './PostPage';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
@@ -20,7 +20,7 @@ function setup() {
       postID: '1'
     }
   };
-  const wrapper = shallow(<PostDetail {...props} />);
+  const wrapper = shallow(<PostPage {...props} />);
 
   return {
     props,
@@ -28,10 +28,10 @@ function setup() {
   };
 }
 
-describe('PostDetail', () => {
+describe('PostPage', () => {
   it('should render', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('.page-post')).to.have.length(1);
+    expect(wrapper.find('.PostPage')).to.have.length(1);
   });
 });
 /* eslint-enable no-undef */
