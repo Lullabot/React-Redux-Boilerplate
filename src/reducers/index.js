@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 import {
   REQUEST_POSTS, RECEIVE_POSTS
 } from '../actions';
@@ -30,8 +29,7 @@ const posts = (state = {
 };
 
 const rootReducer = combineReducers({
-  posts,
-  routing: routerReducer
+  posts
 });
 
 export default rootReducer;

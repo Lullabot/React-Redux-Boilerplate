@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
@@ -26,11 +25,9 @@ const store = createStore(
   composeEnhancers(applyMiddleware(...middleware))
 );
 
-const history = syncHistoryWithStore(browserHistory, store);
-
 render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router history={browserHistory}>
       { routes }
     </Router>
   </Provider>,
