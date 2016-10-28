@@ -3,15 +3,10 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import reducers from './reducers';
+import posts from './reducers';
 import routes from './routes';
-// Import can't be in conditional so use require.
-if (process.env.WEBPACK) {
-  require('./main.css'); // eslint-disable-line
-}
 
 // This allows us to use Redux dev tools.
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
@@ -25,16 +20,14 @@ if (process.env.NODE_ENV !== 'production') {
 const preloadedState = window.__PRELOADED_STATE__ || {}; // eslint-disable-line
 
 const store = createStore(
-  reducers,
+  posts,
   preloadedState,
   composeEnhancers(applyMiddleware(...middleware))
 );
 
-const history = syncHistoryWithStore(browserHistory, store);
-
 render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router history={browserHistory}>
       { routes }
     </Router>
   </Provider>,

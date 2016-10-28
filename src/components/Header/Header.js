@@ -7,9 +7,9 @@ if (process.env.WEBPACK) {
 }
 
 const Header = () => (
-  <div className="header">
-    <h1 className="title">React Redux Boilerplate</h1>
-    <ul className="menu">
+  <div className="Header">
+    <h1 className="Header-title">React Redux Boilerplate</h1>
+    <ul className="Header-menu">
       <Link to="/">Home</Link>
     </ul>
   </div>

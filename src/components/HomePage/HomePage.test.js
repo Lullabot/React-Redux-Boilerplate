@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { Home } from './Home';
+import { HomePage } from './HomePage';
 
 const fn = sinon.spy();
 
@@ -17,7 +17,7 @@ function setup() {
     isFetching: false,
     dispatch: fn
   };
-  const wrapper = shallow(<Home {...props} />);
+  const wrapper = shallow(<HomePage {...props} />);
 
   return {
     props,
@@ -25,10 +25,10 @@ function setup() {
   };
 }
 
-describe('Home', () => {
+describe('HomePage', () => {
   it('should render', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('.page-home')).to.have.length(1);
+    expect(wrapper.find('.HomePage')).to.have.length(1);
   });
 });
 /* eslint-enable no-undef */

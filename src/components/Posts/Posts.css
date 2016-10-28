@@ -1,14 +1,11 @@
-@import '../../variables.css';
+@import '../../css/variables.css';
 
-.post-titles {
+.Posts {
   padding-left: 0;
+}
 
-  li {
-    list-style: none;
-    text-transform: capitalize;
-  }
-
-  .post-title {
-    margin-bottom: 20px;
-  }
+.Posts-post {
+  list-style: none;
+  text-transform: capitalize;
+  margin-bottom: 20px;
 }

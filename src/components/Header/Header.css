@@ -1,20 +1,20 @@
-.header {
+.Header {
   margin-bottom: 36px;
   overflow: hidden;
 }
 
-.title,
-.menu {
+.Header-title,
+.Header-menu {
   box-sizing: border-box;
   float: left;
   margin: 0;
   width: 50%;
 }
 
-.title {
+.Header-title {
   font-size: 32px;
 }
 
-.menu {
+.Header-menu {
   text-align: right;
 }
