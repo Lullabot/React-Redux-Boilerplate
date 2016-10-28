@@ -4,12 +4,12 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, Router } from 'react-router';
 import Meta from 'react-helmet';
-import reducers from './reducers';
+import posts from './reducers';
 import routes from './routes';
 import api from './lib/api';
 import { receivePosts } from './actions';
 
-const store = createStore(reducers);
+const store = createStore(posts);
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
