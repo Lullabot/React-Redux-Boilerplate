@@ -2,21 +2,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import sinon from 'sinon';
 import { HomePage } from './HomePage';
-
-const fn = sinon.spy();
+import mockProps from '../../lib/mockProps';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
   // Mock required props
-  const props = {
-    posts: {
-      items: []
-    },
-    isFetching: false,
-    dispatch: fn
-  };
+  const props = mockProps();
   const wrapper = shallow(<HomePage {...props} />);
 
   return {
