@@ -8,6 +8,7 @@ const postcssMixins = require('postcss-mixins');
 const postcssMqPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
 const csswring = require('csswring');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -20,6 +21,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new CleanWebpackPlugin(['public/*']),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
