@@ -34,9 +34,7 @@ The intention is to provide a basic, but comprehensive, skeleton for React proje
 All of these are currently mainstream tools for building modern JavaScript applications, however, it may be useful to discuss the rationale for the inclusion of some of these tools.
 
 #### Redux
-Redux is both a library and an architecture. It is influenced by Flux, Immutable.js and other prior work. As Facebook are the authors of React and they have famously used Flux in their work, why would one choose instead to use Redux?
-
-Dan Abramov, the creator of Redux, posted a response on [Stack Overflow](http://stackoverflow.com/questions/32461229/why-use-redux-over-facebook-flux) about how/why Redux may be preferred over Flux. It provides valuable insight into the major benefits of Redux.
+Redux is both a library and an architecture. It is influenced by Flux, Immutable.js and other prior work. Dan Abramov, the creator of Redux, posted a response on [Stack Overflow](http://stackoverflow.com/questions/32461229/why-use-redux-over-facebook-flux) about how/why Redux may be preferred over Flux. It provides valuable insight into the major benefits of Redux.
 
 #### PostCSS
 If you're familiar with Sass, then writing CSS within this boilerplate project will come easily to you. Although Sass itself is not included, support for Sass syntax has been added due to its popularity. Why not just use Sass? PostCSS can do everything Sass can do, but more. Or less. It's up to the devs on the team to trick it out as they see fit. Also, you can do a lot with PostCSS that isn't possible with Sass.
