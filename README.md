@@ -1,7 +1,15 @@
 # React Redux Boilerplate
-This is meant as a starter for React projects using tools, patterns and practices that represent the current state of the art in JavaScript development. In those areas where this project fails to achieve that standard, contributions are most welcome! If you'd like to get started using this project quickly, simply clone the repository and type:
+This is meant as a starter for React projects using tools, patterns and practices that represent the current state of the art in JavaScript development. In those areas where this project fails to achieve that standard, contributions are most welcome!
 
-`npm install`
+We recommend using [yarn](https://code.facebook.com/posts/1840075619545360) to manage dependencies. To begin using yarn, install globally with `npm install -g yarn`.
+
+Then simply clone the repository and install using the `yarn` command.
+
+```
+git clone git@github.com:Lullabot/React-Redux-Boilerplate.git
+cd React-Redux-Boilerplate
+yarn
+```
 
 To build the dev environment with hot reloading of JS and CSS, type:
 
