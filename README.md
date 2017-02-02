@@ -1,6 +1,8 @@
 # React Redux Boilerplate
 This is meant as a starter for React projects using tools, patterns and practices that represent the current state of the art in JavaScript development. In those areas where this project fails to achieve that standard, contributions are most welcome!
 
+**Note:** Node v6+ is required for this project.
+
 We recommend using [yarn](https://code.facebook.com/posts/1840075619545360) to manage dependencies. To begin using yarn, install globally with `npm install -g yarn`.
 
 Then simply clone the repository and install using the `yarn` command.
@@ -37,7 +39,7 @@ The intention is to provide a basic, but comprehensive, skeleton for React proje
 - Stylelint and eslint (modified AirBnB)
 - Mocha and Chai (testing)
 - Babel (latest JS)
-- ghooks (run tasks using git hooks like commit, pre-push)
+- husky (run tasks using git hooks like commit, pre-push)
 
 All of these are currently mainstream tools for building modern JavaScript applications, however, it may be useful to discuss the rationale for the inclusion of some of these tools.
 
@@ -64,8 +66,8 @@ If you are worried about "separation of concerns", please see MPJ's [humorous ra
 
 Another quick note, the components designated as "pages" - HomePage, PostPage - are [container components](http://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components).
 
-#### ghooks
-Note that linting is performed on each commit and tests are run on pre-push. These tasks are courtesy of [ghooks](https://www.npmjs.com/package/ghooks). For reference, the ghooks config for this project is near the bottom of `package.json`.
+#### husky
+Note that linting is performed on each commit and tests are run on pre-push. These tasks are courtesy of [husky](https://www.npmjs.com/package/husky). For reference, the husky tasks are in the `scripts` section of `package.json`.
 
 #### Import of CSS
 Take a look at `src/components/HomePage.js`. Near the top of that file you will see a conditional import of the `HomePage.css` file. This is how CSS imports with webpack work.
