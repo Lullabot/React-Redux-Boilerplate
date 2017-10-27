@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../lib/api';
 
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
@@ -26,7 +26,7 @@ export const receivePost = json => ({
 });
 
 export const fetchPosts = () => (
-  dispatch => axios('https://jsonplaceholder.typicode.com/posts')
+  dispatch => api('https://jsonplaceholder.typicode.com/posts')
     .then(
       json => dispatch(receivePosts(json)),
     )

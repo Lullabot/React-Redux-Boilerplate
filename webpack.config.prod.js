@@ -10,6 +10,7 @@ const autoprefixer = require('autoprefixer');
 const csswring = require('csswring');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src'),
@@ -19,6 +20,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new CleanWebpackPlugin(['public/*']),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),

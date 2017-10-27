@@ -2,22 +2,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import sinon from 'sinon';
-import { Home } from './Home';
-
-const fn = sinon.spy();
+import { HomePage } from './HomePage';
+import mockProps from '../../lib/mockProps';
 
 // Make a setup() helper that passes props and renders the component with shallow rendering
 function setup() {
   // Mock required props
-  const props = {
-    posts: {
-      items: []
-    },
-    isFetching: false,
-    dispatch: fn
-  };
-  const wrapper = shallow(<Home {...props} />);
+  const props = mockProps();
+  const wrapper = shallow(<HomePage {...props} />);
 
   return {
     props,
@@ -25,10 +17,10 @@ function setup() {
   };
 }
 
-describe('Home', () => {
+describe('HomePage', () => {
   it('should render', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('.page-home')).to.have.length(1);
+    expect(wrapper.find('.HomePage')).to.have.length(1);
   });
 });
 /* eslint-enable no-undef */

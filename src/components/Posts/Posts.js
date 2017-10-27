@@ -7,10 +7,10 @@ if (process.env.WEBPACK) {
 }
 
 const Posts = props => (
-  <ul className="post-titles">
+  <ul className="Posts">
     {props.posts.map((post, i) =>
-      <li key={i} className="post-title">
-        <Link to={`/post-detail/${post.id}`}>{post.title}</Link>
+      <li key={i} className="Posts-post">
+        <Link to={`/post/${post.id}`}>{post.title}</Link>
       </li>
     )}
   </ul>
