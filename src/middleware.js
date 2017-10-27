@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, Router } from 'react-router';
-import DocumentMeta from 'react-document-meta';
+import Meta from 'react-helmet';
 import reducers from './reducers';
 import routes from './routes';
 
@@ -11,6 +11,7 @@ const store = createStore(reducers);
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    const head = Meta.rewind();
     if (error) {
       res.status(500).send(error.message);
     }
@@ -21,6 +22,10 @@ export default (req, res) => {
       if (process.env.NODE_ENV === 'development') {
         res.status(200).send(`
           <html>
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width">
+            </head>
             <body>
               <div id='app'></div>
               <script src='bundle.js'></script>
@@ -33,8 +38,12 @@ export default (req, res) => {
         res.status(200).send(`
           <html>
             <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width">
               <link rel='stylesheet' href='bundle.css'>
-              ${DocumentMeta.renderAsReact()}
+              ${head.title.toString()}
+              ${head.meta.toString()}
+              ${head.link.toString()}
             </head>
             <body>
               <div id='app'>${renderToString(
