@@ -9,8 +9,6 @@ import routes from './routes';
 import api from './lib/api';
 import { receivePosts } from './actions';
 
-const store = createStore(posts);
-
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     const head = Meta.rewind();
@@ -36,6 +34,7 @@ export default (req, res) => {
         `);
       }
       else if (process.env.NODE_ENV === 'production') {
+        const store = createStore(reducers);
         api('https://jsonplaceholder.typicode.com/posts')
           .then(
             json => store.dispatch(receivePosts(json)),

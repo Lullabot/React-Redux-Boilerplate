@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Import can't be in conditional so use require.
 if (process.env.WEBPACK) {
