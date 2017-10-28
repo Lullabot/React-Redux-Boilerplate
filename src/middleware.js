@@ -11,7 +11,6 @@ import { receivePosts } from './actions';
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
-    const head = Meta.rewind();
     if (error) {
       res.status(500).send(error.message);
     }
@@ -46,7 +45,7 @@ export default (req, res) => {
                 <Router {...renderProps} />
               </Provider>
             );
-            const head = Meta.rewind();
+            const head = Meta.rewind(); // eslint-disable-line
             res.status(200).send(`
               <html>
                 <head>
