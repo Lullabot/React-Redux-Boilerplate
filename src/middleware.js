@@ -4,12 +4,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, Router } from 'react-router';
 import Meta from 'react-helmet';
-import posts from './reducers';
+import reducers from './reducers';
 import routes from './routes';
 import api from './lib/api';
 import { receivePosts } from './actions';
-
-const store = createStore(posts);
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -23,6 +21,10 @@ export default (req, res) => {
       if (process.env.NODE_ENV === 'development') {
         res.status(200).send(`
           <html>
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width">
+            </head>
             <body>
               <div id='app'></div>
               <script src='/bundle.js'></script>
@@ -31,6 +33,7 @@ export default (req, res) => {
         `);
       }
       else if (process.env.NODE_ENV === 'production') {
+        const store = createStore(reducers);
         api('https://jsonplaceholder.typicode.com/posts')
           .then(
             json => store.dispatch(receivePosts(json)),
@@ -42,10 +45,12 @@ export default (req, res) => {
                 <Router {...renderProps} />
               </Provider>
             );
-            const head = Meta.rewind();
+            const head = Meta.rewind(); // eslint-disable-line
             res.status(200).send(`
               <html>
                 <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width">
                   ${head.title.toString()}
                   ${head.meta.toString()}
                   ${head.link.toString()}
